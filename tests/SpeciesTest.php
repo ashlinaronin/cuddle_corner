@@ -99,8 +99,8 @@
         {
             //Arrange
             $name = "dog";
-            $fur = true;
-            $wings = true;
+            $fur = 1;
+            $wings = 1;
             $legs = 4;
             $test_species = new Species($name, $fur, $wings, $legs);
             $test_species->save();
@@ -110,15 +110,41 @@
             $result = Species::getAll();
 
             //Assert
-            $this->assertEquals($test_species, $result[0]);
+            $this->assertEquals([$test_species], $result);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $name = "manbearpig";
+            $fur = 1;
+            $wings = 1;
+            $legs = 8;
+            $test_species = new Species($name, $fur, $wings, $legs);
+            $test_species->save();
+
+            $name2 = "donaldtrump";
+            $fur2 = 0;
+            $wings2 = 0;
+            $legs2 = 100;
+            $test_species2 = new Species($name2, $fur2, $wings2, $legs2);
+            $test_species2->save();
+
+            //Act
+            $result = Species::getAll();
+
+            //Assert
+            $this->assertEquals([$test_species, $test_species2], $result);
+
+
         }
 
         function test_deleteAll()
         {
             //Arrange
             $name = "flamingo";
-            $fur = false;
-            $wings = true;
+            $fur = 0;
+            $wings = 1;
             $legs = 2;
             $test_species = new Species($name, $fur, $wings, $legs);
             $test_species->save();
@@ -134,15 +160,15 @@
         function test_find()
         {
             //Arrange
-            $name = "rat";
-            $fur = false;
-            $wings = false;
+            $name = "naked mole rat";
+            $fur = 0;
+            $wings = 0;
             $legs = 4;
             $test_species = new Species($name, $fur, $wings, $legs);
             $test_species->save();
 
             //Act
-            $result = Species::find($test_species->getName());
+            $result = Species::find("naked mole rat");
 
             //Assert
             $this->assertEquals($test_species, $result);

@@ -87,12 +87,10 @@
 
         static function find($search_name)
         {
-            //$db_species = $GLOBALS['DB']->query("SELECT * FROM species WHERE name = '$search_name';");
-            $db_species = $GLOBALS['DB']->query("SELECT * FROM species;");
+            $db_species = $GLOBALS['DB']->query("SELECT * FROM species WHERE name = '{$search_name}';");
             $found = array();
 
             foreach ($db_species as $species) {
-                var_dump($species);
                 $name = $species['name'];
                 $fur = $species['fur'];
                 $wings = $species['wings'];
@@ -105,6 +103,8 @@
             // Return the first search result
             return $found[0];
         }
+
+
 
     }
 ?>
