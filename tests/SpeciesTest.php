@@ -23,6 +23,24 @@
         //     Friend::deleteAll();
         // }
 
+        function test_getName()
+        {
+            //Arrange
+            $name = "dog";
+            $fur = true;
+            $wings = false;
+            $legs = 4;
+            $test_species = new Species($name, $fur, $wings, $legs);
+
+            //Act
+            $result = $test_species->getName();
+
+            //Assert
+            $this->assertEquals($name, $result);
+
+
+        }
+
 
     }
 ?>
