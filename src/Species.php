@@ -85,7 +85,26 @@
         }
 
 
-        // static function find($search_name);
+        static function find($search_name)
+        {
+            //$db_species = $GLOBALS['DB']->query("SELECT * FROM species WHERE name = '$search_name';");
+            $db_species = $GLOBALS['DB']->query("SELECT * FROM species;");
+            $found = array();
+
+            foreach ($db_species as $species) {
+                var_dump($species);
+                $name = $species['name'];
+                $fur = $species['fur'];
+                $wings = $species['wings'];
+                $legs = $species['legs'];
+                $id = $species['id'];
+                $new_species = new Species($name, $fur, $wings, $legs, $id);
+                array_push($found, $new_species);
+            }
+
+            // Return the first search result
+            return $found[0];
+        }
 
     }
 ?>

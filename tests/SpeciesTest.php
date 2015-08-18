@@ -105,12 +105,6 @@
             $test_species = new Species($name, $fur, $wings, $legs);
             $test_species->save();
 
-            // $name2 = "goat";
-            // $fur2 = true;
-            // $wings2 = false;
-            // $legs2 = 4;
-            // $test_species2 = new Species($name2, $fur2, $wings2, $legs2);
-            // $test_species2->save();
 
             //Act
             $result = Species::getAll();
@@ -119,6 +113,41 @@
             $this->assertEquals($test_species, $result[0]);
         }
 
+        function test_deleteAll()
+        {
+            //Arrange
+            $name = "flamingo";
+            $fur = false;
+            $wings = true;
+            $legs = 2;
+            $test_species = new Species($name, $fur, $wings, $legs);
+            $test_species->save();
+
+            //Act
+            Species::deleteAll();
+            $result = Species::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $name = "rat";
+            $fur = false;
+            $wings = false;
+            $legs = 4;
+            $test_species = new Species($name, $fur, $wings, $legs);
+            $test_species->save();
+
+            //Act
+            $result = Species::find($test_species->getName());
+
+            //Assert
+            $this->assertEquals($test_species, $result);
+
+        }
 
 
     }
