@@ -15,13 +15,13 @@
 
     class SpeciesTest extends PHPUnit_Framework_TestCase
     {
-        // protected methods are available to all classes that extend the current
-        // class, including the parent class
-        // protected function tearDown()
-        // {
-        //     Species::deleteAll();
-        //     Friend::deleteAll();
-        // }
+        //protected methods are available to all classes that extend the current
+        //class, including the parent class
+        protected function tearDown()
+        {
+            Species::deleteAll();
+            //Friend::deleteAll();
+        }
 
         function test_getName()
         {
@@ -98,12 +98,19 @@
         function test_save()
         {
             //Arrange
-            $name = "pig";
-            $fur = false;
-            $wings = false;
+            $name = "dog";
+            $fur = true;
+            $wings = true;
             $legs = 4;
             $test_species = new Species($name, $fur, $wings, $legs);
             $test_species->save();
+
+            // $name2 = "goat";
+            // $fur2 = true;
+            // $wings2 = false;
+            // $legs2 = 4;
+            // $test_species2 = new Species($name2, $fur2, $wings2, $legs2);
+            // $test_species2->save();
 
             //Act
             $result = Species::getAll();
