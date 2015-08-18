@@ -95,6 +95,23 @@
 
         }
 
+        function test_save()
+        {
+            //Arrange
+            $name = "pig";
+            $fur = false;
+            $wings = false;
+            $legs = 4;
+            $test_species = new Species($name, $fur, $wings, $legs);
+            $test_species->save();
+
+            //Act
+            $result = Species::getAll();
+
+            //Assert
+            $this->assertEquals($test_species, $result[0]);
+        }
+
 
 
     }
