@@ -30,6 +30,10 @@
             $fur = true;
             $wings = false;
             $legs = 4;
+
+            /* We don't need to pass a 5th parameter (id). Species constructor
+             * will assume we don't want to assign one and will give it default
+             * value of null. */
             $test_species = new Species($name, $fur, $wings, $legs);
 
             //Act

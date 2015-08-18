@@ -1,24 +1,57 @@
 <?php
     class Species
     {
-        private $id;
         private $name;
         private $fur;
         private $wings;
         private $legs;
+        private $id;
+
+        function __construct($name, $fur, $wings, $legs, $id = null)
+        {
+            $this->name = $name;
+            $this->fur = $fur;
+            $this->wings = $wings;
+            $this->legs = $legs;
+            $this->id = $id;
+        }
 
         // Getters and Setters
-        function getId();
-        function getName();
-        function setName();
-        function getFur();
-        function getWings();
-        function getLegs();
+        function setName($new_name)
+        {
+            $this->name = (string) $new_name;
+        }
 
-        function save();
-        static function getAll();
-        static function deleteAll();
-        static function find($search_name);
+        function getName()
+        {
+            return $this->name;
+        }
+
+        function getFur()
+        {
+            return $this->fur;
+        }
+
+        function getWings()
+        {
+            return $this->wings;
+        }
+
+        function getLegs()
+        {
+            return $this->legs;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+        // Database storage methods
+        // function save();
+        // static function getAll();
+        // static function deleteAll();
+        // static function find($search_name);
 
     }
 ?>
