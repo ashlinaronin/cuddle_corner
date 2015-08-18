@@ -42,8 +42,59 @@
             //Assert
             $this->assertEquals($name, $result);
 
+        }
+
+        function test_getFur()
+        {
+            //Arrange
+            $name = "salamander";
+            $fur = false;
+            $wings = false;
+            $legs = 4;
+            $test_species = new Species($name, $fur, $wings, $legs);
+
+            //Act
+            $result = $test_species->getFur();
+
+            //Assert
+            $this->assertEquals($fur, $result);
 
         }
+
+        function test_getWings()
+        {
+            //Arrange
+            $name = "pigeon";
+            $fur = false;
+            $wings = true;
+            $legs = 2;
+            $test_species = new Species($name, $fur, $wings, $legs);
+
+            //Act
+            $result = $test_species->getWings();
+
+            //Assert
+            $this->assertEquals($wings, $result);
+
+        }
+
+        function test_getLegs()
+        {
+            //Arrange
+            $name = "spider";
+            $fur = false;
+            $wings = false;
+            $legs = 8;
+            $test_species = new Species($name, $fur, $wings, $legs);
+
+            //Act
+            $result = $test_species->getLegs();
+
+            //Assert
+            $this->assertEquals($legs, $result);
+
+        }
+
 
 
     }
